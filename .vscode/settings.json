@@ -1,0 +1,4 @@
+{
+    "markiscodecoverage.enableDecorations": false,
+    "markiscodecoverage.searchCriteria": "**/coverage/lcov.info"
+}

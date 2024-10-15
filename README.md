@@ -15,12 +15,12 @@ As opções dos comandos abaixo podem mudar de acordo com suas necessidades, ver
 dotnet new sln -n VsCodeSolution
 ```
 
-## Listar tipos de projetos disponíveis
+## Listar os templates de projeto disponíveis
 ```csharp
 dotnet new list
 ```
 
-## Criar projeto
+## Criar projetos
 Web Api
 ```csharp
 dotnet new webapi -n WebApiProject -o ./src/WebApiProject -f net8.0 --use-controllers
@@ -39,6 +39,12 @@ dotnet new xunit -n TestProject -o ./tests/TestProject -f net8.0
 dotnet sln add ./src/WebApiProject/ -s src
 dotnet sln add ./src/LibraryProject/ -s src
 dotnet sln add ./tests/TestProject/ -s tests
+```
+
+## Adicionar referência entre projetos
+```csharp
+dotnet add ./src/WebApiProject/WebApiProject.csproj reference ./src/LibraryProject/LibraryProject.csproj
+dotnet add ./tests/TestProject/TestProject.csproj reference ./src/WebApiProject/WebApiProject.csproj
 ```
 
 ## Limpar cache de pacotes
@@ -69,4 +75,9 @@ dotnet test -t
 ## Executar testes
 ```csharp
 dotnet test -c Debug --no-build -v normal
+```
+
+## Adicionar pacote ao projeto
+```csharp
+dotnet add ./tests/TestProject/TestProject.csproj package coverlet.msbuild
 ```
