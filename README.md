@@ -5,10 +5,24 @@ Estudo dos comandos via terminal para utilizar VsCode com .net C#
 Instale as seguintes extensões:
 * [C# Dev Kit](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csdevkit)
 * [Visual Studio Keymap](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vs-keybindings)
+* [.NET Core Test Explorer](https://marketplace.visualstudio.com/items?itemName=formulahendry.dotnet-test-explorer)
+* [Code Coverage](https://marketplace.visualstudio.com/items?itemName=markis.code-coverage)
 
 ## Comandos via terminal
 
 As opções dos comandos abaixo podem mudar de acordo com suas necessidades, verifique o `--help` do comando em caso de dúvidas.
+
+## Listar versão mais atual do SDK instalado
+```csharp
+dotnet --version
+dotnet --info
+```
+
+## Listar todas as versões do SDK instalado
+```csharp
+dotnet --list-sdks
+dotnet sdk check
+```
 
 ## Criar solution
 ```csharp
@@ -47,6 +61,41 @@ dotnet add ./src/WebApiProject/WebApiProject.csproj reference ./src/LibraryProje
 dotnet add ./tests/TestProject/TestProject.csproj reference ./src/WebApiProject/WebApiProject.csproj
 ```
 
+## Listar todos os pacotes instalados nos projetos
+```csharp
+dotnet list package
+dotnet list package --include-transitive
+dotnet list package --include-transitive
+```
+
+## Listar todos os pacotes instalados nos projetos que podem ser atualizados
+```csharp
+dotnet list package --outdated
+dotnet list package --outdated --include-prerelease
+```
+
+## Listar todos os pacotes instalados nos projetos que estão obsoletos
+```csharp
+dotnet list package --deprecated
+```
+
+## Listar todos os pacotes instalados nos projetos que possuem vulnerabilidades
+```csharp
+dotnet list package --vulnerable
+```
+
+## Procurar um pacote para ser instalado
+O comando dotnet não possui recursos para listar todas as versões de um pacote específico, sendo necessário utilizar o CLI do nuget.exe
+```csharp
+dotnet package search moq
+```
+
+## Adicionar pacote ao projeto
+```csharp
+dotnet add ./tests/TestProject/TestProject.csproj package coverlet.msbuild -v 6.0.2
+dotnet add ./tests/TestProject/TestProject.csproj package xunit.runner.visualstudio -v 3.0.0-pre.35
+```
+
 ## Limpar cache de pacotes
 ```csharp
 dotnet nuget locals all --clear
@@ -74,10 +123,5 @@ dotnet test -t
 
 ## Executar testes
 ```csharp
-dotnet test -c Debug --no-build -v normal
-```
-
-## Adicionar pacote ao projeto
-```csharp
-dotnet add ./tests/TestProject/TestProject.csproj package coverlet.msbuild
+dotnet test -c Debug --no-build -v normal /p:CollectCoverage=true /p:CoverletOutput=./coverage/lcov.info /p:CoverletOutputFormat=lcov
 ```
