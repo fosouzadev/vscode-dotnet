@@ -23,7 +23,6 @@ dotnet list package --vulnerable --include-transitive
 ```
 
 ## Procurar um pacote para ser instalado
-O comando dotnet não possui recursos para listar todas as versões de um pacote específico, sendo necessário utilizar o CLI do nuget.exe
 ```csharp
 dotnet package search moq
 ```

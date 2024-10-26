@@ -14,7 +14,7 @@ As opções dos comandos abaixo podem mudar de acordo com suas necessidades, ver
 
 ## Índice
 
-1. [Informações sobre o SDK](docs/sdk-info.md).
-2. [Criar solution e projects](docs/create-soluction-and-projects.md).
-3. [Gerenciamento básico de pacotes](docs/package-management.md).
+1. [Informações sobre o SDK](docs/sdk-info.md);
+2. [Criar solution e projects](docs/create-soluction-and-projects.md);
+3. [Gerenciamento básico de pacotes](docs/package-management.md);
 4. [Build e execução de testes](docs/build-tests.md).
